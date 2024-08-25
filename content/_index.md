@@ -1,7 +1,7 @@
 ---
-description: Solidor's gallery of digital adventures.
-#lastmod: 2023-07-05
-title: Digital Scapes
+description: Game journey through digital photos.
+#lastmod: 2024-08-25
+title: Featured
 featured_image:  # default: first image in this directory
 # featured_image on the home page is used for OpenGraph cards, etc.
 menus:
