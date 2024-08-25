@@ -1,7 +1,7 @@
 ---
 description: Game journey through digital photos.
 #lastmod: 2024-08-25
-title: Featured
+title: Gallery
 featured_image:  # default: first image in this directory
 # featured_image on the home page is used for OpenGraph cards, etc.
 menus:
