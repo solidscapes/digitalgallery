@@ -20,10 +20,16 @@ for file in "$SOURCE_FOLDER"/*; do
         # Get the file extension
         EXTENSION="${file##*.}"
         
-        # For PNG files, compress using pngquant
+        # For PNG files, resize using ImageMagick and then compress using pngquant
         if [[ "$EXTENSION" == "png" ]]; then
-            # Compress the PNG file using pngquant and save to the converted folder
-            pngquant --quality=70 --output "$CONVERTED_FOLDER/$(basename "$file")" "$file"
+            # Resize the PNG using ImageMagick
+            magick "$file" -resize "$TARGET_WIDTH" "$CONVERTED_FOLDER/resized_$(basename "$file")"
+            
+            # Compress the resized PNG using pngquant
+            pngquant --quality=100 --strip --speed 2 --output "$CONVERTED_FOLDER/$(basename "$file")" "$CONVERTED_FOLDER/resized_$(basename "$file")"
+            
+            # Remove the temporary resized file to clean up
+            rm "$CONVERTED_FOLDER/resized_$(basename "$file")"
         
         # For JPG files, just resize and compress with ImageMagick (using "magick")
         elif [[ "$EXTENSION" == "jpg" || "$EXTENSION" == "jpeg" ]]; then
